@@ -6,6 +6,8 @@ import { currencyFormatter } from "@/utils";
 import clsx from "clsx";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const PlaceOrder = () => {
   const router = useRouter();
@@ -38,6 +40,16 @@ export const PlaceOrder = () => {
       setErrorMessage(resp.message);
       return;
     }
+    toast.success("Order success", {
+      position: "top-right",
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
     clearCart();
     router.replace('/orders/' + resp.order?.id)
   }
@@ -48,6 +60,8 @@ export const PlaceOrder = () => {
 
   return (
     <div className="bg-white rounded-xl shadow-xl p-7">
+            <ToastContainer />
+
       <h2 className="text-2xl font-bold mb-2">Direccion de entrega</h2>
       <div className="mb-10">
         <p className="text-xl">

@@ -3,6 +3,7 @@ import { inter } from "@/config/fonts";
 import "./globals.css";
 import { Providers } from "@/components";
 
+
 export const metadata: Metadata = {
   title: {
     template: "%s - Teslo | Shop",
